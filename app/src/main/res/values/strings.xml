@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">BatCal</string>
+    <string name="_0">0</string>
+    <string name="_1"> 1 </string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="add">+</string>
+    <string name="sub">-</string>
+    <string name="mul">×</string>
+    <string name="div">/</string>
+    <string name="dot">.</string>
+    <string name="equal">=</string>
+    <string name="allclear">   AC   </string>
+    <string name="clear">C</string>
+    <string name="percentage">%</string>
+    <string name="plusminus">+/-</string>
+    <string name="batcal_history">BatCal History</string>
+    <string name="preference_fileName">BatHistory</string>
+</resources>
