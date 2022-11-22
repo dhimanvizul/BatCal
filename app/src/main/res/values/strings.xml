@@ -13,7 +13,7 @@
     <string name="add">+</string>
     <string name="sub">-</string>
     <string name="mul">×</string>
-    <string name="div">/</string>
+    <string name="div">÷</string>
     <string name="dot">.</string>
     <string name="equal">=</string>
     <string name="allclear">   AC   </string>
