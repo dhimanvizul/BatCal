@@ -4,17 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import org.mariuszgromada.math.mxparser.Expression
 import com.example.batcal.databinding.ActivityMainBinding
 import java.text.DecimalFormat
-import kotlin.math.min
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     var isDecimalPlaced: Boolean = false
-    var isMinusPlaced: Boolean = false
     var isOpPlaced: Boolean = false
     var result: Double = 0.0
     var saved: String = ""
@@ -69,9 +66,14 @@ class MainActivity : AppCompatActivity() {
             isOpPlaced = false
         }
         binding.btnDot.setOnClickListener {
-            if (!isDecimalPlaced) {
+            if(binding.tvInput.text != "" && !isOpPlaced && !isDecimalPlaced) {
                 binding.tvInput.text = addToInputText(".")
+                isOpPlaced = true
                 isDecimalPlaced = true
+            }
+            if(binding.tvInput.text != "" && binding.tvInput.text.last() != '.' && isOpPlaced && isDecimalPlaced) {
+                binding.tvInput.text = binding.tvInput.text.subSequence(0,binding.tvInput.text.length-1)
+                binding.tvInput.text = addToInputText(".")
             }
         }
 
@@ -129,20 +131,34 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             btnPlusMinus.setOnClickListener {
-                if(tvInput.text == "") {
-                    tvInput.text = addToInputText("-")
-                    isMinusPlaced = true
+                if(tvInput.text != "") {
+                    saved += tvInput.text.toString()+"^"
                 }
-
-                if (tvInput.text.last() != '-' && !isMinusPlaced) {
-                    tvInput.text = addToInputText("-")
-                    isMinusPlaced = true
+                if(tvInput.text != "" && !isOpPlaced) {
+                    tvInput.text = addToInputText("^")
+                    isOpPlaced = true
                 }
-                if(tvInput.text.last() == '-' && isMinusPlaced) {
-                    tvInput.text.replace(Regex("-"),"")
-                    isMinusPlaced = false
+                if(tvInput.text != "" && tvInput.text.last() != '^' && isOpPlaced) {
+                    tvInput.text = tvInput.text.subSequence(0,tvInput.text.length-1)
+                    tvInput.text = addToInputText("^")
                 }
             }
+
+//            btnPlusMinus.setOnClickListener {
+//                if(tvInput.text == "") {
+//                    tvInput.text = addToInputText("-")
+//                    isMinusPlaced = true
+//                }
+//
+//                if (tvInput.text.last() != '-' && !isMinusPlaced) {
+//                    tvInput.text = addToInputText("-")
+//                    isMinusPlaced = true
+//                }
+//                if(tvInput.text.last() == '-' && isMinusPlaced) {
+//                    tvInput.text.replace(Regex("-"),"")
+//                    isMinusPlaced = false
+//                }
+//            }
             btnAllClear.setOnClickListener {
                 tvInput.text = ""
                 tvOutput.text = ""

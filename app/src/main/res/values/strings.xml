@@ -22,4 +22,6 @@
     <string name="plusminus">+/-</string>
     <string name="batcal_history">BatCal History</string>
     <string name="preference_fileName">BatHistory</string>
+    <string name="mod">%</string>
+    <string name="power">^</string>
 </resources>
